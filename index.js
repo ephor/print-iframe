@@ -17,4 +17,4 @@ const printIframe = content => {
   }, 0);
 };
 
-export default printIframe;
+module.exports = printIframe;
