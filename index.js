@@ -1,4 +1,4 @@
-const printIframe = content => {
+function printIframe(content) {
   const ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", "printFrame");
   ifrm.setAttribute("name", "printFrame");
@@ -8,13 +8,13 @@ const printIframe = content => {
   const printFrame = window.frames["printFrame"];
   printFrame.document.write(content);
   printFrame.document.write(
-    "<script>window.onload = () => { window.print(); }</script>"
+    "<script>window.onload = function() { window.print(); }</script>"
   );
   printFrame.document.close();
-  setTimeout(() => {
+  setTimeout(function() {
     // need to remove print elements on the next tick otherwise print preview doesn't always display styles
     ifrm.remove();
   }, 0);
-};
+}
 
 module.exports = printIframe;
